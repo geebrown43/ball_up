@@ -18,13 +18,16 @@ export default class App extends React.Component {
   handleSubmit = () => {
     const apiKey = 'AIzaSyBt6dWk9Pa4H1VAbC1iZ0ZmVBFnd_qz7_Q'
     let place = this.state.place
+    let lat
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${place}&key=${apiKey}`)
       .then(res => res.json()
-        .then(data => this.setState({
+        .then(data => {
+          this.setState({
           location: data.results[0].geometry.location
-        })))
-
-        this.gymData(this.state.location)
+        })
+      newLocation = this.state.location
+        }))
+        console.log(newLocation)
   }
 
   handleSearch= (event) => {
@@ -33,8 +36,6 @@ export default class App extends React.Component {
 
 
   render() {
-
-    console.log(this.state.location)
     return (
       <View style={styles.container}>
         <Text>Ball Up</Text>
