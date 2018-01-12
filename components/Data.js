@@ -21,7 +21,9 @@ const Data = [
     "number": "(720) 865-0580",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Montbello-exterior.jpg",
-    "zipcode": 80239
+    "zipcode": 80239,
+    "latitude": 39.791000,
+    "longitude": -104.806566
     },
     {
     "id": 3,
@@ -32,7 +34,9 @@ const Data = [
     "number": "(720) 865-0750",
     "hours": "",
     "image": "http://recmanagement.com/images/201205/201205_aw_1d_04.jpg",
-    "zipcode": 80238
+    "zipcode": 80238,
+    "latitude": 39.760999,
+    "longitude": -104.875224
     },
     {
     "id": 4,
@@ -43,7 +47,9 @@ const Data = [
     "number": "(720) 865-0560",
     "hours": "",
     "image": "http://www.thebluebook.com/inc/img/qp/229035/montclair-recreation-center-pool.JPG",
-    "zipcode": 80230
+    "zipcode": 80230,
+    "latitude": 39.727294,
+    "longitude": -104.894679
     },
     {
     "id": 5,
@@ -54,7 +60,9 @@ const Data = [
     "number": "(720) 865-0590",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Hiawatha_Buiding.jpg",
-    "zipcode": 80207
+    "zipcode": 80207,
+    "latitude": 39.764364,
+    "longitude": -104.921837
     },
     {
     "id": 6,
@@ -65,7 +73,9 @@ const Data = [
     "number": "(720) 865-0540",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Swansea_Building.jpg",
-    "zipcode": 80216
+    "zipcode": 80216,
+    "latitude": 39.785561,
+    "longitude": -104.955541
     },
     {
     "id": 7,
@@ -76,7 +86,9 @@ const Data = [
     "number": "(303) 295-4462",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/StCharles-exterior-door1.jpg",
-    "zipcode": 80205
+    "zipcode": 80205,
+    "latitude": 39.769437,
+    "longitude": -104.971326
     },
     {
     "id": 8,
@@ -87,7 +99,9 @@ const Data = [
     "number": "(720) 865-0530",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/MLK_Building.jpg",
-    "zipcode": 80207
+    "zipcode": 80207,
+    "latitude": 39.770683,
+    "longitude": -104.909260
     },
     {
     "id": 9,
@@ -98,7 +112,9 @@ const Data = [
     "number": "(720) 865-3400",
     "hours": "",
     "image": "http://www.ward-construction.com/images/Projects/Washington1.jpg",
-    "zipcode": 80209
+    "zipcode": 80209,
+    "latitude": 39.700250,
+    "longitude": -104.971049,
     },
     {
     "id": 10,
@@ -109,7 +125,9 @@ const Data = [
     "number": "(720) 865-2170",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/LAFAM_Buiding.jpg",
-    "zipcode": 80223
+    "zipcode": 80223,
+    "latitude": 39.715692,
+    "longitude": -104.994349
     },
     {
     "id": 11,
@@ -120,7 +138,9 @@ const Data = [
     "number": "(720) 865-0730",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/eisenhower-exterior.jpg",
-    "zipcode": 80222
+    "zipcode": 80222,
+    "latitude": 39.659617,
+    "longitude": -104.937375
     },
     {
     "id": 12,
@@ -131,7 +151,9 @@ const Data = [
     "number": "(720) 865-2150",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Stapleton-exterior1.jpg",
-    "zipcode": 80216
+    "zipcode": 80216,
+    "latitude": 39.788930,
+    "longitude": -104.987226
     },
     {
     "id": 13,
@@ -142,7 +164,9 @@ const Data = [
     "number": "(720) 865-0640",
     "hours": "",
     "image": "https://s3-media4.fl.yelpcdn.com/bphoto/cvGHx0csM3f-mAQgDf2HHA/ls.jpg",
-    "zipcode": 80212
+    "zipcode": 80212,
+    "latitude": 39.781300,
+    "longitude": -105.051012
     },
     {
     "id": 14,
@@ -153,7 +177,9 @@ const Data = [
     "number": "(720) 865-2200",
     "hours": "",
     "image": "https://www.du.edu/ahss/urbanstudies/media/images/8_laalmarec_us.jpg",
-    "zipcode": 80204
+    "zipcode": 80204,
+    "latitude": 39.733790,
+    "longitude": -105.004283
     },
     {
     "id": 15,
@@ -164,7 +190,9 @@ const Data = [
     "number": "(720) 865-0570",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/rude-exterior.jpg",
-    "zipcode": 80204
+    "zipcode": 80204,
+    "latitude": 39.736618,
+    "longitude": -105.023343
     },
     {
     "id": 16,
@@ -175,7 +203,9 @@ const Data = [
     "number": "(303) 937-4600",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/642/images/091905_ATHMAR%20003.jpg",
-    "zipcode": 80219
+    "zipcode": 80219,
+    "latitude": 39.685450,
+    "longitude": -105.019784
     },
     {
     "id": 17,
@@ -186,7 +216,9 @@ const Data = [
     "number": "(720) 865-0510",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Ashland-exterior2.jpg",
-    "zipcode": 80211
+    "zipcode": 80211,
+    "latitude": 39.759853,
+    "longitude": -105.017689
     },
     {
     "id": 18,
@@ -197,7 +229,10 @@ const Data = [
     "number": "(303) 458-4899",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/Aztlan-exterior1.jpg",
-    "zipcode": 80211
+    "zipcode": 80211,
+    "latitude": 39.777518,
+    "longitude": -105.004548
+
     },
     {
     "id": 19,
@@ -208,7 +243,9 @@ const Data = [
     "number": "(720) 865-0550",
     "hours": "",
     "image": "https://www.denvergov.org/content/dam/denvergov/Portals/747/images/rec_centers/HarveyPark-exterior1.jpg",
-    "zipcode": 80219
+    "zipcode": 80219,
+    "latitude": 39.677937,
+    "longitude":  -105.042159
     },
     {
     "id": 20,
@@ -219,7 +256,9 @@ const Data = [
     "number": "(303) 791-2500",
     "hours": "",
     "image": "https://hrcaonline.org/Portals/0//pictures/Tiles/About%20Us/SR.jpg",
-    "zipcode": 80126
+    "zipcode": 80126,
+    "latitude": 39.543745,
+    "longitude": -104.937699
     },
     {
     "id": 21,
@@ -230,7 +269,9 @@ const Data = [
     "number": "(303) 481-1289",
     "hours": "",
     "image": "https://s3-media4.fl.yelpcdn.com/bphoto/Lmrm2pEbHzAoP17MX3QSHA/ls.jpg",
-    "zipcode": 80017
+    "zipcode": 80017,
+    "latitude": 39.706640,
+    "longitude": -104.809766
     },
     {
     "id": 22,
@@ -241,7 +282,9 @@ const Data = [
     "number": "(303) 343-1049",
     "hours": "",
     "image": "https://www.24hourfitness.com/images/clubs/club_slideshows/572/album1/xlarge/image1.jpg",
-    "zipcode": 80230
+    "zipcode": 80230,
+    "latitude": 39.718919,
+    "longitude": -104.896253
     },
     {
     "id": 23,
@@ -252,7 +295,9 @@ const Data = [
     "number": "(303) 782-9424",
     "hours": "",
     "image": "https://www.24hourfitness.com/images/clubs/club_slideshows/951/album1/large/image1.jpg",
-    "zipcode": 80246
+    "zipcode": 80246,
+    "latitude": 39.703748,
+    "longitude": -104.939977
     },
     {
     "id": 24,
@@ -263,7 +308,9 @@ const Data = [
     "number": "(303) 377-4424",
     "hours": "",
     "image": "https://www.24hourfitness.com/images/clubs/club_slideshows/351/album1/large/image1.jpg",
-    "zipcode": 80249
+    "zipcode": 80249,
+    "latitude": 39.710989,
+    "longitude": -104.939539
     },
     {
     "id": 25,
@@ -274,7 +321,9 @@ const Data = [
     "number": "(303) 757-3224",
     "hours": "",
     "image": "https://www.24hourfitness.com/images/clubs/club_slideshows/951/album1/large/image1.jpg",
-    "zipcode": 80222
+    "zipcode": 80222,
+    "latitude": 39.665886,
+    "longitude": -104.940228
     }
     ]
 

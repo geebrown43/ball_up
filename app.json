@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Ball Up",
-    "slug": "ball_up",
+    "slug": "ball-up",
     "sdkVersion": "23.0.0",
     "privacy": "public"
   }

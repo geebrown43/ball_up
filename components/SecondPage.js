@@ -21,10 +21,16 @@ export default class SecondPage extends React.Component {
             region={{
               latitude: 39.742043,
               longitude: -104.991531,
-              latitudeDelta: 0.1,
+              latitudeDelta: 0.16,
               longitudeDelta: 0.04
             }}>
-            {this.state.data.map(a => console.log(a))}
+            {this.state.data.map(a => <MapView.Marker key={a.id} coordinate={{latitude: a.latitude, longitude: a.longitude}}>
+              <MapView.Callout>
+                <Text>{a.name}</Text>
+                <Text>{a.address}</Text>
+              </MapView.Callout>
+              
+              </MapView.Marker>)}
             </MapView>
         </View>
 
