@@ -38,11 +38,6 @@ export default class App extends React.Component {
   };
 
   handleSubmit = () => {
-    fetch('https://ballcourts-api.herokuapp.com/api/courts')
-    .then(res =>res.json()
-    .then(data => this.setState({data:data}))
-    );
-
     this.setState({ fontLoaded: false, searching: false, secondPage: true });
   };
 
@@ -98,7 +93,7 @@ export default class App extends React.Component {
             </View>
           ) : null}
 
-          {this.state.secondPage ? <SecondPage data={this.state.data} /> : null}
+          {this.state.secondPage ? <SecondPage /> : null}
         </View>
       </View>
     );
