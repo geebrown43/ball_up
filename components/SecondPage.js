@@ -13,14 +13,15 @@ export default class SecondPage extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View>
         <View style={styles.container}>
           <MapView
             style={styles.map}
             region={{
-              latitude: 39.742043,
-              longitude: -104.991531,
+              latitude: this.props.data.lat,
+              longitude: this.props.data.lng,
               latitudeDelta: 0.16,
               longitudeDelta: 0.04
             }}>

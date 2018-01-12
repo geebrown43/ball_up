@@ -19,10 +19,10 @@ export default class App extends React.Component {
     this.state = {
       location: [],
       place: "",
-      data: [],
       fontLoaded: false,
       searching: false,
-      secondPage: false
+      secondPage: false,
+      data:[]
     };
   }
 
@@ -38,15 +38,21 @@ export default class App extends React.Component {
   };
 
   handleSubmit = () => {
+    let place = this.state.place
+    const key = 'AIzaSyBZgK1pc-lLKJkhkTRRLs8Rr-4xPLb0dpY'
+    fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
+    .then(res => res.json()
+    .then(data => this.setState({data:data.results[0].geometry.location})))
     this.setState({ fontLoaded: false, searching: false, secondPage: true });
   };
 
   handleSearch = event => {
+    //console.log(event.nativeEvent.text)
     this.setState({ place: event.nativeEvent.text });
   };
 
   render() {
-    console.log(this.state.data);
+    
     return (
       <View style={styles.container}>
         <View>
@@ -93,7 +99,7 @@ export default class App extends React.Component {
             </View>
           ) : null}
 
-          {this.state.secondPage ? <SecondPage /> : null}
+          {this.state.secondPage ? <SecondPage data ={this.state.data}/> : null}
         </View>
       </View>
     );
