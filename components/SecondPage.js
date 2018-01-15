@@ -24,7 +24,6 @@ export default class SecondPage extends React.Component {
     let place = this.props.place
     const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
     const json = await response.json()
-    console.log(json)
     this.setState({ mapV: json.results[0].geometry.location })
 
     //Calls function to get user location
@@ -62,7 +61,6 @@ export default class SecondPage extends React.Component {
 
   
   render() {
-    console.log(this.state.mapV)
     return (
       <View>
         {this.state.mapV !== null ? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker} handleText={this._handleSearch}> </Mapping> : <Text style={styles.loading}>Map Loading</Text>}
