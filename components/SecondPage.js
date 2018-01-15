@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from "react-native";
 import { MapView, Location, Permissions } from "expo";
 import Mapping from './Mapping';
 
+
+
 export default class SecondPage extends React.Component {
   constructor() {
     super();
@@ -10,13 +12,14 @@ export default class SecondPage extends React.Component {
       mapV: null,
       location: null,
       userMarker: null,
-      errorMessage: null
+      errorMessage: null,
+     
     }
   }
 
   watchID: ?number = null
 
- async componentDidMount() {
+  async componentDidMount() {
     let key = 'AIzaSyBZgK1pc-lLKJkhkTRRLs8Rr-4xPLb0dpY'
     let place = this.props.place
     const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
@@ -52,16 +55,23 @@ export default class SecondPage extends React.Component {
     let location = await Location.getCurrentPositionAsync({});
     this.setState({ userMarker: location.coords })
   }
+
+  _handleSearch = (e) => {
+    this.setState({place: e.nativeEvent.text})
+  }
   render() {
     console.log(this.state.mapV)
     return (
       <View>
-       {this.state.mapV !== null? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker}> </Mapping>: <Text style={styles.loading}>Map Loading</Text>}
+        {this.state.mapV !== null ? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker} handleText={this._handleSearch}> </Mapping> : <Text style={styles.loading}>Map Loading</Text>}
+        
       </View>
 
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   loading: {

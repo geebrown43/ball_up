@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableHighlight } from 'react-native'
 import { MapView } from "expo";
 import Data from "./Data";
 import CustomMap from './MapStyle'
-
+import Search from 'react-native-search-box'
 export default class Mapping extends React.Component {
   constructor(props) {
     super(props)
@@ -12,21 +12,35 @@ export default class Mapping extends React.Component {
       mapV: {
         lat: this.props.mapV.lat,
         lng: this.props.mapV.lng
-      }
+      },
+      place: null
     }
   }
 
+  _locationSubmit = () => {
+    let key = 'AIzaSyBZgK1pc-lLKJkhkTRRLs8Rr-4xPLb0dpY'
+    let place = this.state.place
+    console.log(place)
+    fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
+    .then(res => res.json()
+  .then(data => this.setState({mapV: data.results[0].geometry.location})))
+  }
 
+  _locationChange = (e) => {
+    this.setState({place: e})
+  }
 
   render() {
-    console.log(this.props)
     return (
       <View style={{ height: '100%', backgroundColor: 'transparent' }}>
+        <View style={styles.search}>
+          <Find textChange={this._locationChange} submitting={this._locationSubmit}/>
+      </View>
         <MapView
           provider={MapView.PROVIDER_GOOGLE}
           style={{ flex: 1 }}
           customMapStyle={CustomMap}
-          initialRegion={{
+          region={{
             latitude: this.state.mapV.lat,
             longitude: this.state.mapV.lng,
             latitudeDelta: 0.16,
@@ -55,11 +69,15 @@ export default class Mapping extends React.Component {
             </MapView.Marker>
           ))}
         </MapView>
-
+        
       </View>
     )
   }
 }
+
+const Find = ({textChange, submitting}) => (
+  <Search placeholder='Search Cities' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting}/>
+)
 
 
 const styles = StyleSheet.create({
@@ -83,5 +101,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#007AFF'
   },
-
+  search: {
+    marginTop: 20
+  }
 })
