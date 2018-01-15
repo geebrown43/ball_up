@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableHighlight,
+  
 } from "react-native";
 import { Font } from "expo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
@@ -17,7 +18,6 @@ export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      location: [],
       place: "",
       fontLoaded: false,
       searching: false,
@@ -31,20 +31,23 @@ export default class App extends React.Component {
       pacifico: require("./assets/fonts/Pacifico-Regular.ttf")
     });
     this.setState({ fontLoaded: true, searching: true });
+    
   }
 
-  gymData = () => {
-    console.log(this.state.location);
-  };
+  
 
   handleSubmit = () => {
+
     this.setState({ fontLoaded: false, searching: false, secondPage: true });
   };
 
   handleSearch = event => {
     //console.log(event.nativeEvent.text)
+   
     this.setState({ place: event.nativeEvent.text });
   };
+
+  
 
   render() {
     
@@ -104,9 +107,8 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100%',
     backgroundColor: "rgb(254, 248, 223)",
-    marginTop: 20
   },
   text: {
     fontFamily: "Damion-Regular",
