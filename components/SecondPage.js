@@ -59,6 +59,8 @@ export default class SecondPage extends React.Component {
   _handleSearch = (e) => {
     this.setState({place: e.nativeEvent.text})
   }
+
+  
   render() {
     console.log(this.state.mapV)
     return (

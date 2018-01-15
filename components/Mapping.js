@@ -4,6 +4,7 @@ import { MapView } from "expo";
 import Data from "./Data";
 import CustomMap from './MapStyle'
 import Search from 'react-native-search-box'
+import Card from './CourtCard'
 export default class Mapping extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +14,8 @@ export default class Mapping extends React.Component {
         lat: this.props.mapV.lat,
         lng: this.props.mapV.lng
       },
-      place: null
+      place: null,
+      isVisible: false
     }
   }
 
@@ -29,6 +31,9 @@ export default class Mapping extends React.Component {
   _locationChange = (e) => {
     this.setState({place: e})
   }
+  _showModal = () => {
+    this.setState({isVisible: !this.state.isVisible})
+  }
 
   render() {
     return (
@@ -43,7 +48,7 @@ export default class Mapping extends React.Component {
           region={{
             latitude: this.state.mapV.lat,
             longitude: this.state.mapV.lng,
-            latitudeDelta: 0.16,
+            latitudeDelta: 0.15,
             longitudeDelta: 0.04
           }}
         >
@@ -59,24 +64,22 @@ export default class Mapping extends React.Component {
               key={a.id}
               coordinate={{ latitude: a.latitude, longitude: a.longitude }}
             >
-              <MapView.Callout >
+              <MapView.Callout onPress={this._showModal}>
                 <Text>{a.name}</Text>
                 <Text>{a.address}</Text>
-                <TouchableHighlight >
-                  <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>Schedule Game</Text>
-                </TouchableHighlight>
+                  <Text style={{ color: 'blue', textDecorationLine: 'underline', textAlign: 'center' }}>Schedule Game</Text>
               </MapView.Callout>
             </MapView.Marker>
           ))}
         </MapView>
-        
+        <Card isVisible={this.state.isVisible} _showModal={this._showModal}/>
       </View>
     )
   }
 }
 
 const Find = ({textChange, submitting}) => (
-  <Search placeholder='Search Cities' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting}/>
+  <Search placeholder='Search' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting} blurOnSubmit={true} inputBorderRadius={10} inputHeight={30}/>
 )
 
 
@@ -102,6 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007AFF'
   },
   search: {
-    marginTop: 20
+    marginTop: 20,
+    backgroundColor: 'transparent'
   }
 })
