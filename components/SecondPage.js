@@ -1,77 +1,74 @@
 import React from "react";
-import { List, ListItem } from "react-native-elements";
-import { Text, ScrollView, View, StyleSheet } from "react-native";
-import { MapView} from "expo";
-import Data from "./Data";
-import CustomMap from'./MapStyle'
-import Centers from './RecCenters'
+import { Text, View, StyleSheet } from "react-native";
+import { MapView, Location, Permissions } from "expo";
+import Mapping from './Mapping';
 
 export default class SecondPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      data: Data,
-      court: false,
-      mapV: null
-    };
+      mapV: null,
+      location: null,
+      userMarker: null,
+      errorMessage: null
+    }
   }
-  async componentDidMount(){
+
+  watchID: ?number = null
+
+ async componentDidMount() {
     let key = 'AIzaSyBZgK1pc-lLKJkhkTRRLs8Rr-4xPLb0dpY'
     let place = this.props.place
     const response = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
     const json = await response.json()
     console.log(json)
-    this.setState({mapV: json.results[0].geometry.location})
-  }
+    this.setState({ mapV: json.results[0].geometry.location })
 
+    //Calls function to get user location
+    this._getLocationAsync();
+    //Watchs for user change in position
+    this.watchID = navigator.geolocation.watchPosition((position) => {
+      let lat = parseFloat(position.coords.latitude)
+      let lng = parseFloat(position.coords.longitude)
+      let userChange = {
+        latitude: lat,
+        longitude: lng,
+      }
+      this.setState({ userMarker: userChange })
+    })
+  }
+  //Clears watchID
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID)
+  }
+  //Gets user location after submit
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION)
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied'
+      })
+    }
+    let location = await Location.getCurrentPositionAsync({});
+    this.setState({ userMarker: location.coords })
+  }
   render() {
     console.log(this.state.mapV)
     return (
       <View>
-        {this.state.mapV !== null ?<View style={{position: 'relative', height: '100%'}}>
-        
-        <MapView
-        provider={MapView.PROVIDER_GOOGLE}
-          style={{top: 0, bottom: 0, right: 0, left: 0, position: 'absolute'}}
-          zoomEnabled
-          scrollEnabled
-          rotateEnabled
-          loadingEnabled={true }
-          minZoomLevel = {0}
-          customMapStyle={CustomMap}
-          initialRegion={{
-            latitude: this.state.mapV.lat,
-            longitude: this.state.mapV.lng,
-            latitudeDelta: 0.16,
-            longitudeDelta: 0.04
-          }}
-        >
-          {this.state.data.map(a => (
-            <MapView.Marker
-              key={a.id}
-              coordinate={{ latitude: a.latitude, longitude: a.longitude }}
-            >
-              <MapView.Callout >
-                <Text>{a.name}</Text>
-                <Text>{a.address}</Text>
-              </MapView.Callout>
-            </MapView.Marker>
-          ))}
-        </MapView>
+       {this.state.mapV !== null? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker}> </Mapping>: <Text style={styles.loading}>Map Loading</Text>}
       </View>
-      : <Text style={styles.loading}>Map Loading</Text> }
-      
-      </View>
+
     );
   }
 }
 
-
 const styles = StyleSheet.create({
   loading: {
-   textAlign:'center',
-   fontFamily: 'pacifico',
-   color: 'red',
+    marginTop: '100%',
+    textAlign: 'center',
+    fontFamily: 'pacifico',
+    color: 'red',
     fontSize: 28
   }
 })
