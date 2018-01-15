@@ -32,6 +32,7 @@ export default class Mapping extends React.Component {
     this.setState({place: e})
   }
   _showModal = () => {
+   
     this.setState({isVisible: !this.state.isVisible})
   }
 
@@ -79,7 +80,7 @@ export default class Mapping extends React.Component {
 }
 
 const Find = ({textChange, submitting}) => (
-  <Search placeholder='Search' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting} blurOnSubmit={true} inputBorderRadius={10} inputHeight={30}/>
+  <Search placeholder='Search' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting} inputBorderRadius={10} inputHeight={30}/>
 )
 
 
