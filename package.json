@@ -22,8 +22,10 @@
     "expo": "^23.0.6",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-display": "^1.0.8",
     "react-native-elements": "^0.18.4",
     "react-native-maps": "^0.18.3",
+    "react-native-progress": "^3.4.0",
     "react-native-textinput-effects": "^0.4.2",
     "react-native-vector-icons": "^4.4.2",
     "superagent": "^3.8.2"
