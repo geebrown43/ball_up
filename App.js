@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableHighlight,
-  
+
 } from "react-native";
 import { Font } from "expo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
@@ -22,7 +22,7 @@ export default class App extends React.Component {
       fontLoaded: false,
       searching: false,
       secondPage: false,
-      data:[]
+      data: []
     };
   }
 
@@ -31,28 +31,25 @@ export default class App extends React.Component {
       pacifico: require("./assets/fonts/Pacifico-Regular.ttf")
     });
     this.setState({ fontLoaded: true, searching: true });
-    
+
   }
 
-  
+
 
   handleSubmit = () => {
-
     this.setState({ fontLoaded: false, searching: false, secondPage: true });
   };
 
   handleSearch = event => {
-    //console.log(event.nativeEvent.text)
-   
     this.setState({ place: event.nativeEvent.text });
   };
 
-  
+
 
   render() {
-    
+
     return (
-      
+
       <View style={styles.container}>
         <View>
           {this.state.fontLoaded ? (
@@ -60,15 +57,16 @@ export default class App extends React.Component {
               style={{
                 alignItems: "center",
                 justifyContent: "center",
-                marginTop: 100,
-                marginBottom: 40
+                marginTop: 80,
+                marginBottom: 60
               }}
             >
               <Text
-                style={{ fontSize: 85, fontFamily: "pacifico", color: "red" }}
+                style={{ fontSize: 85, fontFamily: "pacifico", color: "red", marginBottom: 10 }}
               >
                 ballUp
               </Text>
+              <Text style={{fontSize: 20, marginTop: 10}}>~Where Ballers meet~</Text>
             </View>
           ) : null}
 
@@ -98,7 +96,7 @@ export default class App extends React.Component {
             </View>
           ) : null}
 
-          {this.state.secondPage ? <SecondPage place={this.state.place}/> : null}
+          {this.state.secondPage ? <SecondPage place={this.state.place} /> : null}
         </View>
       </View>
     );
@@ -109,6 +107,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: "rgb(254, 248, 223)",
+    justifyContent: 'space-between'
   },
   text: {
     fontFamily: "Damion-Regular",
