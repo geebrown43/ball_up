@@ -63,7 +63,7 @@ export default class SecondPage extends React.Component {
   render() {
     return (
       <View>
-        {this.state.mapV !== null ? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker} handleText={this._handleSearch}> </Mapping> : <Text style={styles.loading}>Map Loading</Text>}
+        {this.state.mapV !== null ? <Mapping mapV={this.state.mapV} userMarker={this.state.userMarker} handleText={this._handleSearch}> </Mapping> : <View style={styles.position}><Text style={styles.loading}>Map Loading</Text></View>}
         
       </View>
 
@@ -75,10 +75,12 @@ export default class SecondPage extends React.Component {
 
 const styles = StyleSheet.create({
   loading: {
-    marginTop: '100%',
     textAlign: 'center',
     fontFamily: 'pacifico',
     color: 'red',
     fontSize: 28
+  },
+  position:{
+    marginTop: '50%'
   }
 })
