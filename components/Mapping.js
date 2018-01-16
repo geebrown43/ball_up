@@ -15,7 +15,8 @@ export default class Mapping extends React.Component {
         lng: this.props.mapV.lng
       },
       place: null,
-      isVisible: false
+      isVisible: false,
+      individual:null
     }
   }
 
@@ -24,24 +25,29 @@ export default class Mapping extends React.Component {
     let place = this.state.place
     console.log(place)
     fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${place}&key=${key}`)
-    .then(res => res.json()
-  .then(data => this.setState({mapV: data.results[0].geometry.location})))
+      .then(res => res.json()
+        .then(data => this.setState({ mapV: data.results[0].geometry.location })))
   }
 
   _locationChange = (e) => {
-    this.setState({place: e})
+    this.setState({ place: e })
   }
-  _showModal = () => {
-   
+  _showModalandCard = (a) => {
+    
+    this.setState({ isVisible: !this.state.isVisible, individual: a })
+  }
+
+  _showCard = () => {
     this.setState({isVisible: !this.state.isVisible})
   }
 
   render() {
+
     return (
       <View style={{ height: '100%', backgroundColor: 'transparent' }}>
         <View style={styles.search}>
-          <Find textChange={this._locationChange} submitting={this._locationSubmit}/>
-      </View>
+          <Find textChange={this._locationChange} submitting={this._locationSubmit} />
+        </View>
         <MapView
           provider={MapView.PROVIDER_GOOGLE}
           style={{ flex: 1 }}
@@ -65,22 +71,25 @@ export default class Mapping extends React.Component {
               key={a.id}
               coordinate={{ latitude: a.latitude, longitude: a.longitude }}
             >
-              <MapView.Callout onPress={this._showModal}>
+              <MapView.Callout id={a.id} onPress={() =>this._showModalandCard({a})}>
                 <Text>{a.name}</Text>
                 <Text>{a.address}</Text>
-                  <Text style={{ color: 'blue', textDecorationLine: 'underline', textAlign: 'center' }}>Schedule Game</Text>
+                <Text style={{ color: 'blue', textDecorationLine: 'underline', textAlign: 'center' }}>Schedule Game</Text>
+                {/* <Court data={a} /> */}
               </MapView.Callout>
             </MapView.Marker>
           ))}
         </MapView>
-        <Card isVisible={this.state.isVisible} _showModal={this._showModal}/>
+        {this.state.individual !== null ?<Card isVisible={this.state.isVisible} _showCard={this._showCard} data={this.state.individual}/> : null }
+        
       </View>
     )
   }
 }
 
-const Find = ({textChange, submitting}) => (
-  <Search placeholder='Search' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting} inputBorderRadius={10} inputHeight={30}/>
+
+const Find = ({ textChange, submitting }) => (
+  <Search placeholder='Search' onChangeText={e => textChange(e)} backgroundColor='rgb(238, 118, 79)' onSearch={submitting} inputBorderRadius={10} inputHeight={30} />
 )
 
 
